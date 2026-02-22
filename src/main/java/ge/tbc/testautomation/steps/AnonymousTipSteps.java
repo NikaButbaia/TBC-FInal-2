@@ -1,5 +1,6 @@
 package ge.tbc.testautomation.steps;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import ge.tbc.testautomation.pages.AnonymousTipPage;
 
@@ -11,6 +12,7 @@ public class AnonymousTipSteps {
     }
 
     public AnonymousTipSteps inputOrganizationName(String organizationName){
+        page.organizationInput().click(new Locator.ClickOptions().setForce(true));
         page.organizationInput().fill(organizationName);
         return this;
     }
@@ -40,9 +42,9 @@ public class AnonymousTipSteps {
         return this;
     }
 
-    public AnonymousTipSteps selectCountry(String country){
+    public AnonymousTipSteps selectCountry(){
         page.selectCountry().click();
-        page.selectCountryDropdown().getByText(country).click();
+        page.selectCountryDropdown().first().click();
         return this;
     }
 
@@ -101,9 +103,9 @@ public class AnonymousTipSteps {
         return this;
     }
 
-    public AnonymousTipSteps selectIncidentCountry(String country){
+    public AnonymousTipSteps selectIncidentCountry(){
         page.incidentCountry().click();
-        page.incidentCountryDropdown().getByText(country).click();
+        page.selectCountryDropdown().first().click();
         return this;
     }
 

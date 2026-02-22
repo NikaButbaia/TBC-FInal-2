@@ -5,16 +5,29 @@ import com.microsoft.playwright.Page;
 
 public class LoansPage {
     private final Page page;
+    private final boolean isMobile;
 
-    public LoansPage(Page page) {
+    public LoansPage(Page page, boolean isMobile) {
         this.page = page;
+        this.isMobile = isMobile;
     }
+
     public Locator loanAmountInputByLoan(){
-        return page.locator("input[type='number'][min='200']");
+        if (isMobile) {
+            return page.locator("input.input[type='number']").first();
+        } else {
+            return page.locator("input[type='number'][min='200']");
+        }
     }
+
     public Locator loanPeriodInputByLoan(){
-        return page.locator("input[type='number'][min='3']");
+        if (isMobile) {
+            return page.locator("input.input[type='number']").nth(1);
+        } else {
+            return page.locator("input[type='number'][min='3']");
+        }
     }
+
     public Locator monthlyPayment(){
         return page.locator(".tbcx-pw-calculated-info__number--new").first();
     }

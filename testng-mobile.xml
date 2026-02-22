@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Mobile Suite" parallel="tests" thread-count="2">
+
+    <test name="Chrome Mobile">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="device" value="mobile"/>
+        <classes>
+<!--            <class name="ge.tbc.testautomation.AnonymousTipTest"/>-->
+<!--            <class name="ge.tbc.testautomation.LoanTest"/>-->
+<!--            <class name="ge.tbc.testautomation.BranchesTest"/>-->
+<!--            <class name="ge.tbc.testautomation.AbroadTransferTest"/>-->
+<!--            <class name="ge.tbc.testautomation.ChatBotTest"/>-->
+        </classes>
+    </test>
+</suite>

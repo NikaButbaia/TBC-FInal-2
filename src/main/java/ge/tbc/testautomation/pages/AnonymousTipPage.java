@@ -13,13 +13,13 @@ public class AnonymousTipPage {
         return page.locator("input[id='organisation']");
     }
     public Locator noToWorkButton(){
-        return page.locator("#headlessui-radiogroup-option-:ra:");
+        return page.getByText("არა").first();
     }
     public Locator infoAboutIncident(){
         return page.locator("input[id='referer']");
     }
     public Locator halfAnonReport(){
-        return page.locator("#headlessui-radiogroup-option-:ri:");
+        return page.getByText("ნახევრად");
     }
     public Locator firstName(){
         return page.locator("input[id='firstName']");
@@ -31,7 +31,7 @@ public class AnonymousTipPage {
         return page.locator("button[id='whistleblowerAddress.country']");
     }
     public Locator selectCountryDropdown(){
-        return page.locator("#radix-:rre:");
+        return page.locator("[data-value]");
     }
     public Locator jobTitle(){
         return page.locator("input[id='jobTitle']");
@@ -46,7 +46,7 @@ public class AnonymousTipPage {
         return page.locator("input[id='confirmEmail']");
     }
     public Locator incidentContinueNoButton(){
-        return page.locator("#headlessui-radiogroup-option-:r16:");
+        return page.getByText("არა").nth(4);
     }
     public Locator peopleInvolvedFirstName(){
         return page.locator("input[id='peopleInvolved.0.firstName']");
@@ -69,9 +69,6 @@ public class AnonymousTipPage {
     public Locator incidentCountry(){
         return page.locator("button[id='incidentAddress.country']");
     }
-    public Locator incidentCountryDropdown(){
-        return page.locator("#radix-:r8g:");
-    }
     public Locator placeOfIncident(){
         return page.locator("input[id='placeOfIncident']");
     }
@@ -85,6 +82,6 @@ public class AnonymousTipPage {
         return page.locator("input[id='memorableWord']");
     }
     public Locator confirmButton(){
-        return page.locator("#headlessui-radiogroup-option-:r1t:");
+        return page.getByText("დიახ").nth(5);
     }
 }

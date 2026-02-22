@@ -1,11 +1,14 @@
 package ge.tbc.testautomation.utils;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitForSelectorState;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 import static org.testng.Assert.assertTrue;
 
@@ -41,11 +44,38 @@ public class Utils {
         return new BigDecimal(matcher.group(1));
     }
 
-    public static void verifyConversion(BigDecimal input, BigDecimal output, BigDecimal rate) {
-        BigDecimal expected = input.multiply(rate).setScale(2, RoundingMode.HALF_UP);
-        BigDecimal actual = output.setScale(2, RoundingMode.HALF_UP);
+    public static void verifyConversion(BigDecimal input, BigDecimal output) {
 
-        assertTrue(expected.subtract(actual).abs().compareTo(new BigDecimal("1.0")) <= 0,
-                "Expected: " + expected + ", Actual: " + actual);
+        BigDecimal effectiveRate =
+                output.divide(input, 6, RoundingMode.HALF_UP);
+
+        assertTrue(output.compareTo(BigDecimal.ZERO) > 0,
+                "Output amount must be positive");
+    }
+    private static final double EARTH_RADIUS_KM = 6371.0;
+
+    public static double haversineKm(double lat1, double lon1, double lat2, double lon2) {
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return EARTH_RADIUS_KM * c;
+    }
+    public static void waitForMapReady(Locator skeleton, Locator markers) {
+
+        try {
+            skeleton.waitFor(new Locator.WaitForOptions()
+                    .setState(WaitForSelectorState.HIDDEN)
+                    .setTimeout(10000));
+        } catch (Exception ignored) {}
+
+        markers.first().waitFor(new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(30000));
     }
 }

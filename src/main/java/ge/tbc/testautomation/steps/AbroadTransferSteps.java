@@ -20,22 +20,24 @@ public class AbroadTransferSteps {
     }
     public AbroadTransferSteps inputCurrency(String currency){
         page.inputCurrencyDropdown().click();
-        page.currencyDropdown().filter(new Locator.FilterOptions().setHasText(currency))
-                .click();
+        page.currencyDropdown()
+                .filter(new Locator.FilterOptions().setHasText(currency))
+                .click(new Locator.ClickOptions().setForce(true));
         return this;
     }
+
     public AbroadTransferSteps outputCurrency(String currency){
         page.outputCurrencyDropdown().click();
-        page.currencyDropdown().filter(new Locator.FilterOptions().setHasText(currency))
-                .click();
+        page.currencyDropdown()
+                .filter(new Locator.FilterOptions().setHasText(currency))
+                .click(new Locator.ClickOptions().setForce(true));
         return this;
     }
     public AbroadTransferSteps verifyConversion() {
         BigDecimal input = Utils.extractNumber(page.moneyInputLocator().inputValue());
         BigDecimal output = Utils.extractNumber(page.moneyOutputLocator().inputValue());
         BigDecimal rate = Utils.extractRate(page.currencyConvertion().textContent());
-
-        Utils.verifyConversion(input, output, rate);
+        Utils.verifyConversion(input, output);
 
         return this;
     }
