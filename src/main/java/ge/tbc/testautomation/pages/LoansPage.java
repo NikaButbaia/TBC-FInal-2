@@ -14,7 +14,7 @@ public class LoansPage {
 
     public Locator loanAmountInputByLoan(){
         if (isMobile) {
-            return page.locator("input.input[type='number']").first();
+            return page.locator("input[type='number']").first();
         } else {
             return page.locator("input[type='number'][min='200']");
         }
@@ -31,4 +31,20 @@ public class LoansPage {
     public Locator monthlyPayment(){
         return page.locator(".tbcx-pw-calculated-info__number--new").first();
     }
+
+    public Locator byIncomeSection(){
+        return page.getByText("შემოსავლით");
+    }
+
+    public Locator loanAmountInputByIncome(){
+        if (isMobile) {
+            return page.locator(".input.ng-untouched ").first();
+        }else {
+            return page.locator("input[type='number']").first();
+        }
+    }
+    public Locator loanPeriodInputByIncome(){
+        return page.locator(".input[type='number']");
+    }
+
 }

@@ -31,4 +31,16 @@ public class LoansSteps {
         assertTrue(monthlyPayment > minimumPayment);
         return this;
     }
+    public LoansSteps navigateToLoansByAmount(){
+        page.byIncomeSection().click();
+        return this;
+    }
+    public LoansSteps loanAmountByIncome(String amount){
+        page.loanAmountInputByIncome().first().fill(amount);
+        return this;
+    }
+    public LoansSteps loanPeriodByIncome(String period){
+        page.loanPeriodInputByIncome().last().fill(period);
+        return this;
+    }
 }

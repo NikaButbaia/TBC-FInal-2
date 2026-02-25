@@ -8,7 +8,7 @@
         <parameter name="device" value="mobile"/>
         <classes>
 <!--            <class name="ge.tbc.testautomation.AnonymousTipTest"/>-->
-<!--            <class name="ge.tbc.testautomation.LoanTest"/>-->
+            <class name="ge.tbc.testautomation.LoanTest"/>
 <!--            <class name="ge.tbc.testautomation.BranchesTest"/>-->
 <!--            <class name="ge.tbc.testautomation.AbroadTransferTest"/>-->
 <!--            <class name="ge.tbc.testautomation.ChatBotTest"/>-->

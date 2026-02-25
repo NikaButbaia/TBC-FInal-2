@@ -10,13 +10,26 @@ public class LoanTest extends BaseTest{
             dataProvider = "loanData",
             dataProviderClass = LoanDataProvider.class
     )
-    public void loanTest(String amount, String period){
+    public void loanTestBasedOnAmount(String amount, String period){
 
         utils.navigateToPage(TBC_Loan_URL);
 
         loansSteps
                 .inputLoanAmount(amount)
                 .inputLoanPeriod(period)
+                .assertCorrectLoan(amount, period);
+    }
+    @Test(
+            dataProvider = "loanData",
+            dataProviderClass = LoanDataProvider.class
+    )
+    public void loanTestBasedOnIncome(String amount, String period){
+        utils.navigateToPage(TBC_Loan_URL);
+
+        loansSteps
+                .navigateToLoansByAmount()
+                .loanAmountByIncome(amount)
+                .loanPeriodByIncome(period)
                 .assertCorrectLoan(amount, period);
     }
 }

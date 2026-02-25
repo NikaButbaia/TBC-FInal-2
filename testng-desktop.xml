@@ -6,8 +6,8 @@
     <test name="Chrome Desktop">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="ge.tbc.testautomation.AnonymousTipTest"/>
-<!--            <class name="ge.tbc.testautomation.LoanTest"/>-->
+<!--            <class name="ge.tbc.testautomation.AnonymousTipTest"/>-->
+            <class name="ge.tbc.testautomation.LoanTest"/>
 <!--            <class name="ge.tbc.testautomation.BranchesTest"/>-->
 <!--            <class name="ge.tbc.testautomation.AbroadTransferTest"/>-->
 <!--            <class name="ge.tbc.testautomation.ChatBotTest"/>-->
@@ -17,8 +17,8 @@
     <test name="Firefox Desktop">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="ge.tbc.testautomation.AnonymousTipTest"/>
-<!--            <class name="ge.tbc.testautomation.LoanTest"/>-->
+<!--            <class name="ge.tbc.testautomation.AnonymousTipTest"/>-->
+            <class name="ge.tbc.testautomation.LoanTest"/>
 <!--            <class name="ge.tbc.testautomation.BranchesTest"/>-->
 <!--            <class name="ge.tbc.testautomation.AbroadTransferTest"/>-->
 <!--            <class name="ge.tbc.testautomation.ChatBotTest"/>-->
@@ -29,7 +29,7 @@
         <parameter name="browser" value="webkit"/>
         <classes>
 <!--            <class name="ge.tbc.testautomation.AnonymousTipTest"/>-->
-<!--            <class name="ge.tbc.testautomation.LoanTest"/>-->
+            <class name="ge.tbc.testautomation.LoanTest"/>
 <!--            <class name="ge.tbc.testautomation.BranchesTest"/>-->
 <!--            <class name="ge.tbc.testautomation.AbroadTransferTest"/>-->
 <!--            <class name="ge.tbc.testautomation.ChatBotTest"/>-->
