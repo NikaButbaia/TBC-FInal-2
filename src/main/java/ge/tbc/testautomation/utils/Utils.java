@@ -67,7 +67,6 @@ public class Utils {
         return EARTH_RADIUS_KM * c;
     }
     public static void waitForMapReady(Locator skeleton, Locator markers) {
-
         try {
             skeleton.waitFor(new Locator.WaitForOptions()
                     .setState(WaitForSelectorState.HIDDEN)
@@ -75,7 +74,7 @@ public class Utils {
         } catch (Exception ignored) {}
 
         markers.first().waitFor(new Locator.WaitForOptions()
-                .setState(WaitForSelectorState.VISIBLE)
+                .setState(WaitForSelectorState.ATTACHED)
                 .setTimeout(30000));
     }
 }

@@ -1,23 +1,28 @@
 package ge.tbc.testautomation;
 
+import ge.tbc.testautomation.dataproviders.LocationDataProvider;
+import com.microsoft.playwright.options.Geolocation;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import static ge.tbc.testautomation.data.Constants.*;
 
 public class BranchesTest extends BaseTest {
 
-    @Test
-    public void branchesLocationTest() {
+    @BeforeClass
+    public void openBranchesPage() {
+        mainSteps.clickBranchesPage();
+        page.waitForLoadState();
+    }
 
-        utils.navigateToPage(TBC_Branches_URL);
+    @Test(
+            dataProvider = "locationData",
+            dataProviderClass = LocationDataProvider.class
+    )
+    public void branchesLocationTest(double lat, double lon, double maxDistanceKm) {
 
-        page.waitForTimeout(4000);
+        context.setGeolocation(new Geolocation(lat, lon));
 
-        branchesSteps.validateMapStartUpCity(
-                TBILISI_LAT,
-                TBILISI_LON,
-                MAX_DISTANCE_KM
-        );
+        page.waitForLoadState();
 
+        branchesSteps.validateMapStartUpCity(lat, lon, maxDistanceKm);
     }
 }
