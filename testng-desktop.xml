@@ -6,33 +6,33 @@
     <test name="Chrome Desktop">
         <parameter name="browser" value="chrome"/>
         <classes>
-<!--            <class name="ge.tbc.testautomation.uitests.AnonymousTipTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.LoanTest"/>-->
+            <class name="ge.tbc.testautomation.uitests.AnonymousTipTest"/>
+            <class name="ge.tbc.testautomation.uitests.LoanTest"/>
             <class name="ge.tbc.testautomation.uitests.BranchesTest"/>
-<!--            <class name="ge.tbc.testautomation.uitests.AbroadTransferTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.ChatBotTest"/>-->
+            <class name="ge.tbc.testautomation.uitests.AbroadTransferTest"/>
+            <class name="ge.tbc.testautomation.uitests.ChatBotTest"/>
         </classes>
     </test>
 
     <test name="Firefox Desktop">
         <parameter name="browser" value="firefox"/>
         <classes>
-<!--            <class name="ge.tbc.testautomation.uitests.AnonymousTipTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.LoanTest"/>-->
+            <class name="ge.tbc.testautomation.uitests.AnonymousTipTest"/>
+            <class name="ge.tbc.testautomation.uitests.LoanTest"/>
             <class name="ge.tbc.testautomation.uitests.BranchesTest"/>
-<!--            <class name="ge.tbc.testautomation.uitests.AbroadTransferTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.ChatBotTest"/>-->
+            <class name="ge.tbc.testautomation.uitests.AbroadTransferTest"/>
+            <class name="ge.tbc.testautomation.uitests.ChatBotTest"/>
         </classes>
     </test>
 
     <test name="WebKit Desktop">
         <parameter name="browser" value="webkit"/>
         <classes>
-<!--            <class name="ge.tbc.testautomation.uitests.AnonymousTipTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.LoanTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.BranchesTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.AbroadTransferTest"/>-->
-<!--            <class name="ge.tbc.testautomation.uitests.ChatBotTest"/>-->
+            <class name="ge.tbc.testautomation.uitests.AnonymousTipTest"/>
+            <class name="ge.tbc.testautomation.uitests.LoanTest"/>
+            <class name="ge.tbc.testautomation.uitests.BranchesTest"/>
+            <class name="ge.tbc.testautomation.uitests.AbroadTransferTest"/>
+            <class name="ge.tbc.testautomation.uitests.ChatBotTest"/>
         </classes>
     </test>
 
