@@ -1,4 +1,4 @@
-package ge.tbc.testautomation;
+package ge.tbc.testautomation.utils;
 
 public enum MobileDevice {
     IPHONE_12_PRO(

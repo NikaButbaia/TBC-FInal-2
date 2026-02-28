@@ -1,7 +1,8 @@
-package ge.tbc.testautomation;
+package ge.tbc.testautomation.uitests;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Geolocation;
+import ge.tbc.testautomation.utils.MobileDevice;
 import ge.tbc.testautomation.steps.*;
 import ge.tbc.testautomation.utils.Utils;
 import org.testng.annotations.*;
@@ -15,6 +16,7 @@ public class BaseTest {
     protected BrowserContext context;
     protected Page page;
     protected boolean isMobile;
+    protected String browserName;
 
     protected Utils utils;
     protected LoansSteps loansSteps;
@@ -30,12 +32,13 @@ public class BaseTest {
             @Optional("chrome") String browserName,
             @Optional("desktop") String device
     ) {
+        this.browserName = browserName;
         playwright = Playwright.create();
 
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
                 .setHeadless(false);
 
-        if (device.equalsIgnoreCase("desktop")) {
+        if (device.equalsIgnoreCase("desktop") && browserName.equalsIgnoreCase("chrome")) {
             launchOptions.setArgs(java.util.List.of("--start-maximized"));
         }
 
@@ -60,20 +63,31 @@ public class BaseTest {
         } else {
             isMobile = false;
             contextOptions = new Browser.NewContextOptions()
-                    .setViewportSize(null)
                     .setPermissions(java.util.List.of("geolocation"))
                     .setGeolocation(new Geolocation(TBILISI_LAT, TBILISI_LON));
+
+            switch (browserName.toLowerCase()) {
+                case "webkit" ->
+                        contextOptions.setViewportSize(1920, 1080);
+                default ->
+                        contextOptions.setViewportSize(null);
+            }
         }
 
         context = browser.newContext(contextOptions);
         page = context.newPage();
+
+        if (browserName.equalsIgnoreCase("firefox") && device.equalsIgnoreCase("desktop")) {
+            page.evaluate("window.moveTo(0,0); window.resizeTo(screen.width, screen.height);");
+        }
+
         page.navigate(TBC_URL);
 
         utils = new Utils(page);
         loansSteps = new LoansSteps(page, isMobile);
         abroadTransferSteps = new AbroadTransferSteps(page);
         chatBotSteps = new ChatBotSteps(page);
-        mainSteps = new MainSteps(page);
+        mainSteps = new MainSteps(page, isMobile);
         anonymousTipSteps = new AnonymousTipSteps(page);
         branchesSteps = new BranchesSteps(page);
     }

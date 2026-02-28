@@ -2,28 +2,33 @@ package ge.tbc.testautomation.steps;
 
 import com.microsoft.playwright.Page;
 import ge.tbc.testautomation.pages.LoansPage;
+import io.qameta.allure.Step;
 
 import static org.testng.Assert.assertTrue;
 
 public class LoansSteps {
-    private final LoansPage page;
+
+    private final LoansPage loansPage;
 
     public LoansSteps(Page page, boolean isMobile) {
-        this.page = new LoansPage(page, isMobile);
+        this.loansPage = new LoansPage(page, isMobile);
     }
 
-    public LoansSteps inputLoanAmount(String amount){
-        page.loanAmountInputByLoan().fill(amount);
+    @Step("Enter loan amount: '{amount}'")
+    public LoansSteps inputLoanAmount(String amount) {
+        loansPage.loanAmountInputByLoan.fill(amount);
         return this;
     }
 
-    public LoansSteps inputLoanPeriod(String period){
-        page.loanPeriodInputByLoan().fill(period);
+    @Step("Enter loan period: '{period}' months")
+    public LoansSteps inputLoanPeriod(String period) {
+        loansPage.loanPeriodInputByLoan.fill(period);
         return this;
     }
 
-    public LoansSteps assertCorrectLoan(String loanAmount, String loanPeriod){
-        String monthlyPaymentText = page.monthlyPayment().textContent().trim();
+    @Step("Verify monthly payment is greater than minimum payment for amount '{loanAmount}' over '{loanPeriod}' months")
+    public LoansSteps assertCorrectLoan(String loanAmount, String loanPeriod) {
+        String monthlyPaymentText = loansPage.monthlyPayment.textContent().trim();
         double monthlyPayment = Double.parseDouble(monthlyPaymentText.replaceAll("[^0-9.]", ""));
         double amount = Double.parseDouble(loanAmount);
         double period = Double.parseDouble(loanPeriod);
@@ -31,16 +36,22 @@ public class LoansSteps {
         assertTrue(monthlyPayment > minimumPayment);
         return this;
     }
-    public LoansSteps navigateToLoansByAmount(){
-        page.byIncomeSection().click();
+
+    @Step("Navigate to 'By Income' loan section")
+    public LoansSteps navigateToLoansByAmount() {
+        loansPage.byIncomeSection.click();
         return this;
     }
-    public LoansSteps loanAmountByIncome(String amount){
-        page.loanAmountInputByIncome().first().fill(amount);
+
+    @Step("Enter income-based loan amount: '{amount}'")
+    public LoansSteps loanAmountByIncome(String amount) {
+        loansPage.loanAmountInputByIncome.fill(amount);
         return this;
     }
-    public LoansSteps loanPeriodByIncome(String period){
-        page.loanPeriodInputByIncome().last().fill(period);
+
+    @Step("Enter income-based loan period: '{period}' months")
+    public LoansSteps loanPeriodByIncome(String period) {
+        loansPage.loanPeriodInputByIncome.fill(period);
         return this;
     }
 }

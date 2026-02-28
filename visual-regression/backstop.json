@@ -1,0 +1,43 @@
+{
+  "id": "tbc_loan",
+  "viewports": [
+    {
+      "label": "desktop",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "loan_calculator_by_amount",
+      "url": "https://tbcbank.ge/ka/",
+      "onReadyScript": "onReadyLoan.js",
+      "delay": 3000,
+      "misMatchThreshold": 0.5,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "loan_calculator_by_income",
+      "url": "https://tbcbank.ge/ka/",
+      "onReadyScript": "onReadyLoanByIncome.js",
+      "delay": 3000,
+      "misMatchThreshold": 0.5,
+      "requireSameDimensions": true
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "engine": "playwright",
+  "engineOptions": {
+    "browser": "chromium",
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 1,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
